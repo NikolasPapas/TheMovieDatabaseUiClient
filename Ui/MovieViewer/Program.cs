@@ -1,4 +1,10 @@
+using MovieViewer.Implementation;
+using MovieViewer.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddTransient<IExternalServiceConnector, ExternalServiceConnector>();
+
 
 builder.Services.AddControllersWithViews();
 
