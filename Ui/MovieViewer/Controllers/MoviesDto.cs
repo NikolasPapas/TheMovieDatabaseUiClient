@@ -1,8 +1,6 @@
-﻿namespace MovieViewer.Types
+﻿namespace MovieViewer.Controllers
 {
     public class MoviesDto
     {
-
-
     }
 }

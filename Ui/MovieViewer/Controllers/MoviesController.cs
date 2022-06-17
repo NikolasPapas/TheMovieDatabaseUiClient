@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieViewer.Types;
+using MovieViewer.Types.DTOs;
 
 namespace MovieViewer.Controllers
 {
@@ -7,7 +8,6 @@ namespace MovieViewer.Controllers
     [Route("[controller]")]
     public class MoviesController : ControllerBase
     {
-
         private readonly ILogger<MoviesController> _logger;
 
         public MoviesController(ILogger<MoviesController> logger)
@@ -20,6 +20,14 @@ namespace MovieViewer.Controllers
         public async Task<IEnumerable<MoviesDto>> GetPopularMovies()
         {
             _logger.LogInformation("getPopularMovies");
+            return null;
+        }
+
+        [HttpGet]
+        [Route("getMovieById")]
+        public async Task<MovieViewDto> GetMovieById(string id)
+        {
+            _logger.LogInformation("getMovieById");
             return null;
         }
     }
