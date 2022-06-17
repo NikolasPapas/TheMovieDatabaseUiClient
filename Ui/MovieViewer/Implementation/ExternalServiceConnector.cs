@@ -12,6 +12,7 @@ namespace MovieViewer.Implementation
 
         public async Task<IEnumerable<MovieListItemDto>> GetMovieList()
         {
+            //TODO Call RestAPI
             return new List<MovieListItemDto>()
             {
                 new MovieListItemDto()
@@ -24,6 +25,7 @@ namespace MovieViewer.Implementation
 
         public async Task<MovieViewDto> GetMovieView(string id)
         {
+            //TODO Call RestAPI
             return new MovieViewDto()
             {
                 Id = "1",
