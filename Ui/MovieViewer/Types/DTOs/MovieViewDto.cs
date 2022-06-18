@@ -5,7 +5,6 @@ namespace MovieViewer.Types.DTOs
     [DataContract]
     public class MovieViewDto : MovieListItemDto
     {
-
         [DataMember(Name = "adult")]
         public bool Adult { get; set; }
 
@@ -26,6 +25,5 @@ namespace MovieViewer.Types.DTOs
 
         [DataMember(Name = "voteCount")]
         public long VoteCount { get; set; }
-
     }
 }

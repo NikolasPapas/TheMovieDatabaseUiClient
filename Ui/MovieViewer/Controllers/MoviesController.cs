@@ -28,7 +28,7 @@ namespace MovieViewer.Controllers
 
         [HttpGet]
         [Route("getMovieById")]
-        public async Task<MovieViewDto> GetMovieById(string id)
+        public async Task<MovieViewDto> GetMovieById([FromQuery]string id)
         {
             _logger.LogInformation("getMovieById");
             return await _externalServiceConnector.GetMovieView(id);
