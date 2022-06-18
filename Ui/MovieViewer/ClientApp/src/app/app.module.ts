@@ -8,6 +8,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ListingComponent } from './listing-component/listing.component';
 import { ViewComponent } from './view-component/view.component';
+import { CoreServiceModule } from './Services/core-services.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ViewComponent } from './view-component/view.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    CoreServiceModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ])
