@@ -7,7 +7,7 @@ namespace MovieViewer.Implementation
     {
         public static IEnumerable<MovieListItemDto> GetMovieListItemDto(this TheMoviesDatabaseResponse source)
         {
-            return source.Results.Select(item => new MovieListItemDto() { Id = item.Id, OriginalTitle = item.OriginalTitle });
+            return source.Results.Select(item => new MovieListItemDto() { Id = item.Id, Title = item.Title });
         }
 
         public static MovieViewDto GetMovieViewDto(this TheMoviesDatabaseResponse source, string id)
@@ -16,6 +16,7 @@ namespace MovieViewer.Implementation
             return new MovieViewDto()
             {
                 Id = item.Id,
+                Title = item.Title,
                 OriginalTitle = item.OriginalTitle,
                 Adult = item.Adult,
                 OriginalLanguage = item.OriginalLanguage,

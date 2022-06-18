@@ -1,0 +1,9 @@
+<mat-expansion-panel class="col-12" [id]="'disbursement-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open()" (closed)="close()">
+    <mat-expansion-panel-header class="col-12">
+        <mat-grid-list class="col-12" rowHeight="55px" cols="10">
+            <!-- <mat-grid-tile [colspan]="3"[rowspan]="2">{{formItem.get('id')?.value}}</mat-grid-tile> -->
+            <mat-grid-tile [colspan]="10"[rowspan]="2">{{formItem.get('title')?.value}}</mat-grid-tile>
+        </mat-grid-list>
+    </mat-expansion-panel-header>
+
+</mat-expansion-panel>

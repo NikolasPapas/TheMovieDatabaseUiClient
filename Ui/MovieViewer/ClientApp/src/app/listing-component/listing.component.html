@@ -1,3 +1,14 @@
-<div *ngFor="let item of movieList">
-  item.originalTitle
+<div class="col-12">
+  <mat-accordion>
+    <mat-expansion-panel [disabled]="false">
+      <mat-expansion-panel-header>
+        <mat-grid-list class="col-12" rowHeight="48px" cols="10">
+          <mat-grid-tile [colspan]="10"><b>Most Popular Movies</b></mat-grid-tile>
+        </mat-grid-list>
+      </mat-expansion-panel-header>
+      <div>
+        <app-listing-item *ngFor="let item of movieListArray?.controls; let i = index;" [expandedIndex]="expandedIndex"  [formItem]="GetItem(i)" (onOpen)="open($event)" (onClose)="close($event)" [index]="i" [lastOpened]="lastOpened === i"></app-listing-item>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

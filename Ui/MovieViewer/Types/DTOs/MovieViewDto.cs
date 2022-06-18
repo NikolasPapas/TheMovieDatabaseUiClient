@@ -8,6 +8,9 @@ namespace MovieViewer.Types.DTOs
         [DataMember(Name = "adult")]
         public bool Adult { get; set; }
 
+        [DataMember(Name = "originalTitle")]
+        public string OriginalTitle { get; set; }
+
         [DataMember(Name = "originaLanguage")]
         public string OriginalLanguage { get; set; }
 

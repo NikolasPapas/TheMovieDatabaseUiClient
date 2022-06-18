@@ -9,7 +9,7 @@ builder.Services.AddHttpClient(StatisValues.TheMoviesDatabaseClientName, httpCli
 {
     httpClient.BaseAddress = new Uri(builder.Configuration["TheMoviesDatabaseClientEndpoint"]);
 });
-builder.Services.AddTransient<IExternalServiceConnector, ExternalServiceConnector>();
+builder.Services.AddSingleton<IExternalServiceConnector, ExternalServiceConnector>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.Configure<ExternalServiceConfiguration>(builder.Configuration.GetSection(StatisValues.ExternalServiceConfigurationName));

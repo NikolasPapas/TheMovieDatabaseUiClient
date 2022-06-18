@@ -3,14 +3,14 @@ import { MovieListItem } from "src/app/models/movie-list-item";
 
 
 
-export class ListingItemEditorModel {
+export class ListingItemModel {
 	id: string="";
-	originalTitle: string="";
+	title: string="";
 
-	public fromModel(item: MovieListItem): ListingItemEditorModel {
+	public fromModel(item: MovieListItem|null): ListingItemModel {
 		if (item) {
 			this.id = item.id;
-			this.originalTitle = item.originalTitle;
+			this.title = item.title;
 		}
 		return this;
 	}
@@ -18,7 +18,7 @@ export class ListingItemEditorModel {
 	buildForm(): FormGroup {
 		return new FormBuilder().group({
 			id: [{ value: this.id, disabled: true }],
-			originalTitle: [{ value: this.originalTitle, disabled: true }]
+			title: [{ value: this.title, disabled: true }]
 		});
 	}
 }

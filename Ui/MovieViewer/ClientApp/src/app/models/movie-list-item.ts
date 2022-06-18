@@ -1,5 +1,5 @@
 
 export interface MovieListItem {
 	id: string;
-	originalTitle: string;
+	title: string;
 }

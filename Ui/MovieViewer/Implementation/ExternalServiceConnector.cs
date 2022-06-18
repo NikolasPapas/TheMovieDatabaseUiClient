@@ -11,6 +11,9 @@ namespace MovieViewer.Implementation
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ExternalServiceConfiguration _config;
+        private TheMoviesDatabaseResponse data;
+
+
         public ExternalServiceConnector(IOptions<ExternalServiceConfiguration> options, IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
@@ -19,14 +22,22 @@ namespace MovieViewer.Implementation
 
         public async Task<IEnumerable<MovieListItemDto>> GetMovieList()
         {
-            TheMoviesDatabaseResponse results = JsonConvert.DeserializeObject<TheMoviesDatabaseResponse>(await GetResultsfromTheMoviesDatabase());
-            return results.GetMovieListItemDto();
+            if (data == null)
+            {
+                TheMoviesDatabaseResponse results = JsonConvert.DeserializeObject<TheMoviesDatabaseResponse>(await GetResultsfromTheMoviesDatabase());
+                data = results;
+            }
+            return data.GetMovieListItemDto();
         }
 
         public async Task<MovieViewDto> GetMovieView(string id)
         {
-            TheMoviesDatabaseResponse results = JsonConvert.DeserializeObject<TheMoviesDatabaseResponse>(await GetResultsfromTheMoviesDatabase());
-            return results.GetMovieViewDto(id);
+            if (data == null)
+            {
+                TheMoviesDatabaseResponse results = JsonConvert.DeserializeObject<TheMoviesDatabaseResponse>(await GetResultsfromTheMoviesDatabase());
+                data = results;
+            }
+            return data.GetMovieViewDto(id);
         }
 
         #region Helpers 

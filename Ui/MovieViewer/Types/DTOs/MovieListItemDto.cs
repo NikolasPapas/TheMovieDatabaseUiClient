@@ -9,7 +9,7 @@ namespace MovieViewer.Types.DTOs
         [DataMember(Name = "id")]
         public string Id { get;set;}
 
-        [DataMember(Name = "originalTitle")]
-        public string OriginalTitle { get;set;}
+        [DataMember(Name = "title")]
+        public string Title { get; set; }
     }
 }

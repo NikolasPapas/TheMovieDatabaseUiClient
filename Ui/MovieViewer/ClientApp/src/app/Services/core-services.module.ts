@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from "@angular/core";
 import { CoreService } from "./core-service";
+import { UserSelectionService } from "./user-selection-service";
 
 
 @NgModule({})
@@ -15,6 +16,7 @@ export class CoreServiceModule {
 			ngModule: CoreServiceModule,
 			providers: [
 				CoreService,
+				UserSelectionService,
 			]
 		};
 	}

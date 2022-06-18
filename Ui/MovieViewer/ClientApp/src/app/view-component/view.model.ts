@@ -1,9 +1,8 @@
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { ListingItemEditorModel } from "../listing-component/listing-item-component/listing-item.model";
+import { ListingItemModel } from "../listing-component/listing-item-component/listing-item.model";
 import { MovieViewItem } from "../models/movie-view";
 
-export class ListingViewEditorModel extends ListingItemEditorModel{
-	id: string="";
+export class ListingViewEditorModel extends ListingItemModel{
 	originalTitle: string="";
 	adult: boolean=true;
 	originalLanguage: string="";
@@ -16,6 +15,7 @@ export class ListingViewEditorModel extends ListingItemEditorModel{
 	public fromModel(item: MovieViewItem): ListingViewEditorModel {
 		if (item) {
 			this.id = item.id;
+			this.title =item.title,
 			this.originalTitle = item.originalTitle;
 			this.adult = item.adult;
 			this.originalLanguage = item.originalLanguage;
@@ -31,6 +31,7 @@ export class ListingViewEditorModel extends ListingItemEditorModel{
 	buildForm(): FormGroup {
 		return new FormBuilder().group({
 			id: [{ value: this.id, disabled: true }],
+			title: [{ value: this.title, disabled: true }],
 			originalTitle: [{ value: this.originalTitle, disabled: true }],
 			adult:[{ value: this.adult, disabled: true }],
 			originalLanguage:[{ value: this.originalLanguage, disabled: true }],
