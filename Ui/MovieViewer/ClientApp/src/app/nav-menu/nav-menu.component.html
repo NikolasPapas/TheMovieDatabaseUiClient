@@ -1,17 +1,17 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']"><b>Movie Viewer</b></a>
+      <a class="navbar-brand" [routerLink]="['/']"><b>Movie Viewer</b></a>
     </div>
     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-      <mat-form-field class="col-3">
-        <mat-select  [(ngModel)]="selectedFilleter">
+      <mat-form-field class="col-5">
+        <mat-select [(ngModel)]="selectedFilleter">
           <mat-option *ngFor="let filter of filterOptions" [value]="filter">{{filter}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button (click)="resetSelection($event)">
-        <mat-icon aria-hidden="false" aria-label="Shearch">search</mat-icon>
-      </button>
+      <div class="col-auto">
+        <mat-icon (click)="resetSelection($event)" aria-hidden="false" aria-label="Shearch">search</mat-icon>
+      </div>
     </div>
   </nav>
 </header>
