@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { FilteredResponce } from "../models/filtered-responce";
+import { FrillerRequest } from "../models/friller-request";
 import { MovieListItem } from "../models/movie-list-item";
 import { MovieViewItem } from "../models/movie-view";
 
@@ -20,4 +22,9 @@ export class CoreService {
 	GetMovieView(id: string): Observable<MovieViewItem> {
 		return this.httpClient.get<MovieViewItem>(this.baseUrl + 'movies/getMovieById' + '?id=' + id);
 	}
+
+	GetMovieFilteredList(reques:FrillerRequest): Observable<FilteredResponce> {
+		return this.httpClient.post<FilteredResponce>(this.baseUrl + 'movies/getFilteredMovies',reques);
+	}
+
 }

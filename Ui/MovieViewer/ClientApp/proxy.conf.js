@@ -8,6 +8,7 @@ const PROXY_CONFIG = [
     context: [
       "/movies/getPopularMovies",
       "/movies/getMovieById",
+      "/movies/getFilteredMovies",
    ],
     target: target,
     secure: false,

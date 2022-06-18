@@ -20,7 +20,9 @@ export class ViewComponent extends BaseComponent implements OnInit, OnChanges {
 	userSelectionService: UserSelectionService;
 	coreService: CoreService;
 	formView: FormGroup = new FormBuilder().group({});
-
+	
+	currentRate:number=0;
+	currentVotes:number=0;
 
 	constructor(userSelectionService: UserSelectionService, coreService: CoreService) {
 		super();
@@ -52,7 +54,6 @@ export class ViewComponent extends BaseComponent implements OnInit, OnChanges {
 		url = url + '?api_key=9198fa6d9a9713bc6b03ee9582525917';
 		this.url = url;
 	}
-
 
 	getValue(name: string): string {
 		return (this.formView.get(name) as FormControl).value;

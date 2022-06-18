@@ -1,4 +1,5 @@
 ﻿using MovieViewer.Types.DTOs;
+using MovieViewer.Types.ExternalComunication;
 
 namespace MovieViewer.Interfaces
 {
@@ -6,5 +7,6 @@ namespace MovieViewer.Interfaces
     {
         Task<IEnumerable<MovieListItemDto>> GetMovieList();
         Task<MovieViewDto> GetMovieView(string id);
+        Task<FilteredResponce> GetFilteredMovies(FrillerRequest reques);
     }
 }

@@ -49,7 +49,7 @@ namespace MovieViewer.Types
         public string PosterPath { get; set; }
 
         [DataMember(Name = "release_date")]
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
 
         [DataMember(Name = "title")]
         public string Title { get; set; }

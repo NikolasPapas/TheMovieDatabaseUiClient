@@ -2,6 +2,7 @@
 using MovieViewer.Interfaces;
 using MovieViewer.Types;
 using MovieViewer.Types.DTOs;
+using MovieViewer.Types.ExternalComunication;
 
 namespace MovieViewer.Controllers
 {
@@ -32,6 +33,14 @@ namespace MovieViewer.Controllers
         {
             _logger.LogInformation("getMovieById");
             return await _externalServiceConnector.GetMovieView(id);
+        }
+
+        [HttpPost]
+        [Route("getFilteredMovies")]
+        public async Task<FilteredResponce> GetFilteredMovies(FrillerRequest reques)
+        {
+            _logger.LogInformation("getPopularMovies");
+            return await _externalServiceConnector.GetFilteredMovies(reques);
         }
     }
 }

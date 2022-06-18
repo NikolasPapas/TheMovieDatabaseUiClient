@@ -18,7 +18,7 @@ namespace MovieViewer.Types.DTOs
         public string Overview { get; set; }
 
         [DataMember(Name = "releaseDate")]
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
 
         [DataMember(Name = "backdropPath")]
         public string BackdropPath { get; set; }

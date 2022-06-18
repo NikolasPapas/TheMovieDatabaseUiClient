@@ -13,6 +13,10 @@ namespace MovieViewer.Implementation
         public static MovieViewDto GetMovieViewDto(this TheMoviesDatabaseResponse source, string id)
         {
             var item = source.Results.FirstOrDefault(x => x.Id == id);
+            DateTime? releaseParsedDate = null;
+            if (DateTime.TryParse(item?.ReleaseDate, out DateTime releaseDate))
+                releaseParsedDate = releaseDate;
+
             return new MovieViewDto()
             {
                 Id = item.Id,
@@ -21,7 +25,7 @@ namespace MovieViewer.Implementation
                 Adult = item.Adult,
                 OriginalLanguage = item.OriginalLanguage,
                 Overview = item.Overview,
-                ReleaseDate = item.ReleaseDate,
+                ReleaseDate = releaseParsedDate,
                 BackdropPath = item.BackdropPath,
                 VoteAverage = item.VoteAverage,
                 VoteCount = item.VoteCount

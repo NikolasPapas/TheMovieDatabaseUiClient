@@ -6,21 +6,34 @@
     </div>
     <div class="col-7 row">
       <div class="col-7">
-		<b>Original Title:</b>
+        <b>Original Title:</b>
         {{getValue('originalTitle')}}
       </div>
       <div class="col-12">
-		<b>Overview:</b>
+        <b>Overview:</b>
         {{getValue('overview')}}
       </div>
-	  <div class="col-4">
-		<b>Original Language:</b>
+      <div class="col-4">
+        <b>Original Language:</b>
         {{getValue('originalLanguage')}}
       </div>
       <div class="col-4">
-		<b>Release Date:</b>
+        <b>Release Date:</b>
         {{getValue('releaseDate')| date: 'dd/MM/yyyy'}}
       </div>
+      <div class="col-6 row">
+        <form class="col-12" [formGroup]="this.formView">
+          <ngx-star-rating formControlName="voteAverage" [id]="'rating'" [disabled]="true"></ngx-star-rating>
+        </form>
+        <hr>
+        <div>Rating: {{getValue('voteAverage')}}</div>
+        <hr>
+        <pre>votes: <b>{{getValue('voteCount')}}</b></pre>
+      </div>
     </div>
+
+
+
+
   </div>
 </mat-card>
