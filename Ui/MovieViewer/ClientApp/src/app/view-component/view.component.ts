@@ -12,7 +12,8 @@ import { ListingViewEditorModel } from './view.model';
 
 @Component({
 	selector: 'app-view',
-	templateUrl: 'view.component.html'
+	templateUrl: 'view.component.html',
+    styleUrls: ['view.component.scss']
 })
 export class ViewComponent extends BaseComponent implements OnInit, OnChanges {
 	url: string = "";

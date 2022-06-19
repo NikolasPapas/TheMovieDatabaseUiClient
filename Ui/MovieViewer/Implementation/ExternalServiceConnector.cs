@@ -34,21 +34,29 @@ namespace MovieViewer.Implementation
             return _data.GetMovieViewDto(id);
         }
 
-        public async Task<FilteredResponce> GetFilteredMovies(FrillerRequest reques)
+        public async Task<FilteredResponse> GetFilteredMovies(FrillerRequest reques)
         {
             if (reques == null || string.IsNullOrEmpty(reques.Filter))
-                return new FilteredResponce() { SelectedFilter = reques.Filter, List = null };
-            TheMoviesDatabaseResponse results = JsonConvert.DeserializeObject<TheMoviesDatabaseResponse>(await GetResultsfromTheMoviesDatabase(StatisValues.FilterList[reques.Filter]));
+                return new FilteredResponse() { SelectedFilter = reques.Filter, List = null };
+            TheMoviesDatabaseResponse results = JsonConvert.DeserializeObject<TheMoviesDatabaseResponse>(await GetResultsfromTheMoviesDatabase(CreateFilters(reques)));
             _data = results;
-            return new FilteredResponce() { SelectedFilter = reques.Filter, List = results.GetMovieListItemDto() };
+            return new FilteredResponse() { SelectedFilter = reques.Filter,SelectedPage= results.Page, PageCount= results.TotalPages, List = results.GetMovieListItemDto() };
+        }
+
+        private List<Tuple<string, string>> CreateFilters(FrillerRequest reques)
+        {
+            List<Tuple<string, string>> filters = new List<Tuple<string, string>>();
+            filters.Add(new Tuple<string, string>("sort_by", $"{StatisValues.FilterList[reques.Filter].Item1}.{StatisValues.FilterList[reques.Filter].Item2}"));
+            if (reques.Page != null) filters.Add(new Tuple<string, string>("page", reques.Page.ToString()));
+            return filters;
         }
 
         #region Helpers 
 
-        private async Task<string> GetResultsfromTheMoviesDatabase(Tuple<string, string> filer = null)
+        private async Task<string> GetResultsfromTheMoviesDatabase(List<Tuple<string, string>> filter = null)
         {
             var httpClient = _httpClientFactory.CreateClient(StatisValues.TheMoviesDatabaseClientName);
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, GetUri(httpClient.BaseAddress.ToString(), GetQueryParamsFromConfiguration(), filer).Uri) { };
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, GetUri(httpClient.BaseAddress.ToString(), GetQueryParamsFromConfiguration(), filter).Uri) { };
             var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
             if (!httpResponseMessage.IsSuccessStatusCode) throw new Exception($"Not Success, Code {httpResponseMessage.StatusCode}");
             string resultString = await httpResponseMessage.Content.ReadAsStringAsync();
@@ -68,16 +76,14 @@ namespace MovieViewer.Implementation
             return queryParams;
         }
 
-        private UriBuilder GetUri(string endpoint, Dictionary<string, string> queryParams, Tuple<string, string> filer = null)
+        private UriBuilder GetUri(string endpoint, Dictionary<string, string> queryParams, List<Tuple<string, string>> filter = null)
         {
             var requestUri = new UriBuilder(endpoint);
-            if (filer != null) queryParams.Add("sort_by", $"{filer.Item1}.{filer.Item2}");
+            if (filter != null && filter.Count>0) filter.ForEach(x=>queryParams.Add(x.Item1,x.Item2));
             queryParams.Keys.ToList().ForEach(paramkey =>
             {
                 if (requestUri.Query.Length > 1)
-                {
                     requestUri.Query = $"{requestUri.Query}&{paramkey}={queryParams[paramkey]}";
-                }
                 else
                     requestUri.Query = $"?{paramkey}={queryParams[paramkey]}";
             });

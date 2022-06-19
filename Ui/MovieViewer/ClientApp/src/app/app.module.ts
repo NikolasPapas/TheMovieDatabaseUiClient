@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     MatSelectModule,
     MatIconModule,
     MatFormFieldModule,
+    MatPaginatorModule,
     NgxStarRatingModule,
     CoreServiceModule.forRoot(),
     RouterModule.forRoot([

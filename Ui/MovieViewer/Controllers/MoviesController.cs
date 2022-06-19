@@ -37,7 +37,7 @@ namespace MovieViewer.Controllers
 
         [HttpPost]
         [Route("getFilteredMovies")]
-        public async Task<FilteredResponce> GetFilteredMovies(FrillerRequest reques)
+        public async Task<FilteredResponse> GetFilteredMovies(FrillerRequest reques)
         {
             _logger.LogInformation("getPopularMovies");
             return await _externalServiceConnector.GetFilteredMovies(reques);

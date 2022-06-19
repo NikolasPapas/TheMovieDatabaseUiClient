@@ -7,6 +7,6 @@ namespace MovieViewer.Interfaces
     {
         Task<IEnumerable<MovieListItemDto>> GetMovieList();
         Task<MovieViewDto> GetMovieView(string id);
-        Task<FilteredResponce> GetFilteredMovies(FrillerRequest reques);
+        Task<FilteredResponse> GetFilteredMovies(FrillerRequest reques);
     }
 }

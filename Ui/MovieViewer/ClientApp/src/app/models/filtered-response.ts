@@ -1,6 +1,8 @@
 import { MovieViewItem } from "./movie-view";
 
-export interface FilteredResponce {
+export interface FilteredResponse {
 	selectedFilter:string;
 	list:MovieViewItem[];
+	selectedPage:number;
+	pageCount:number;
 }

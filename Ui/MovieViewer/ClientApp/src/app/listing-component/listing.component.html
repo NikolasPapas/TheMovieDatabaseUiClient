@@ -7,7 +7,11 @@
         </mat-grid-list>
       </mat-expansion-panel-header>
       <div>
-        <app-listing-item *ngFor="let item of movieListArray?.controls; let i = index;" [expandedIndex]="expandedIndex"  [formItem]="GetItem(i)" (onOpen)="open($event)" (onClose)="close($event)" [index]="i" [lastOpened]="lastOpened === i"></app-listing-item>
+        <mat-paginator [length]="TotalPages" [pageSize]="pageSize" (page)="handlePageEvent($event)" aria-label="Select page">
+        </mat-paginator>
+      </div>
+      <div>
+        <app-listing-item *ngFor="let item of movieListArray?.controls; let i = index;" [isOpened]="expandedIndex===i" [formItem]="GetItem(i)" (onOpen)="open($event)" (onClose)="close($event)" [index]="i"></app-listing-item>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

@@ -9,5 +9,8 @@ namespace MovieViewer.Types.ExternalComunication
         [DataMember(Name = "filter")]
         public string? Filter { get; set; }
 
+        [DataMember(Name = "page")]
+        public int? Page { get; set; }
+
     }
 }
